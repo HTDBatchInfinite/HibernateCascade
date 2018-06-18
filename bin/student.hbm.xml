@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- class -->
+	<class name="com.domain.Student" table="Student_TB">
+		<!-- Id -->
+
+		<id name="stuID" type="int" column="STU_ID" length="20">
+			<generator class="increment"></generator>
+		</id>
+
+		<!-- properties -->
+		<property name="stuName" type="string" column="STU_Name"
+			length="20"></property>
+
+		<!--one to many -->
+		<list name="address" cascade="all">
+			<key column="Student_Fk"></key>
+			<index type="type"></index>
+			<one-to-many class="com.domain.Address"/>
+		</list>
+	</class>
+</hibernate-mapping>
